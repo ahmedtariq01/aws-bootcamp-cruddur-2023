@@ -19,7 +19,7 @@
 4- I spent some time researching the best practices for setting up a CI/CD pipeline on AWS.
 
 - I created the CI/CD pipeline architecture diagram.
-- I created a diagram that outlines the various components of the pipeline, including the source code repository, build server, - testing environment, and deployment mechanism.
+- I created a diagram that outlines the various components of the pipeline, including the source code repository, build server, testing environment, and deployment mechanism.
 - I also made notes on how each component of the pipeline is connected and the dependencies between them.
 
 ### CI/CD Pipeline Architecture Diagram
