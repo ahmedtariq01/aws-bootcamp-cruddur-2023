@@ -23,7 +23,7 @@
 - I also made notes on how each component of the pipeline is connected and the dependencies between them.
 
 ### CI/CD Pipeline Architecture Diagram
-<a href="https://online.visual-paradigm.com/community/share/automation-process-19jxgjf6yf" target="_blank">CI/CD Pipeline Architecture Diagram</a>
+<a href="https://lucid.app/lucidchart/dc74d222-2278-4273-a741-269d7beaf5fb/edit?view_items=Yzbz3kuGTY39&invitationId=inv_b1a4980c-0ba6-4f57-96e8-8ba2e4d7b4b9" target="_blank">CI/CD Pipeline Architecture Diagram</a>
 
 
 5- I drew a diagram that outlines the architecture of the application that we'll to deploy on AWS.
@@ -33,7 +33,7 @@
 - I also made notes about the technologies and services that will be used to build and deploy the application, as well as any potential scalability or performance considerations.
 
 ### Application Architecture Diagram
-<a href="https://online.visual-paradigm.com/community/share/crudder-app-19jx2tqbm1" target="_blank">Application Architecture Diagram</a>
+<a href="https://lucid.app/lucidchart/c81b8184-1972-4182-bd25-b306e6a7b478/edit?view_items=3KbzM8XTKnAJ&invitationId=inv_423ed95a-be7e-4822-97f6-c345faa0780d" target="_blank">Application Architecture Diagram</a>
 
 
 
