@@ -1,5 +1,7 @@
 # Week 0 — Billing and Architecture
 
+## Reqired Homework Tasks
+
 1- I watched the tutorial videos.
 
 - I spent some time watching tutorial videos to gain a better understanding of AWS and its services.
@@ -32,6 +34,7 @@ aws --version
 ```
 ![Installing aws cli](assets/awscli.jpg)
 
+## Homework Challenges
 
 4- I spent some time researching the best practices for setting up a CI/CD pipeline on AWS.
 
