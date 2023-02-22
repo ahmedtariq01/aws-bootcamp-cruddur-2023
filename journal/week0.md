@@ -1,6 +1,6 @@
 # Week 0 — Billing and Architecture
 
-## Reqired Homework Tasks
+## Required Homework Tasks
 
 1- I watched the tutorial videos.
 
