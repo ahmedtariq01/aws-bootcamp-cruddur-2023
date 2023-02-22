@@ -23,6 +23,7 @@
 - I generated the credentials and set up AWS CLI.
 - I configured the AWS CLI with these credentials so that I can easily run commands from my local machine.
 - I installed the aws cli on my local machine and tested it by running the command `aws --version` to check the version of the CLI that I have installed.
+![aws cli installaton for window](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ```
 msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
