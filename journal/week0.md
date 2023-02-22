@@ -8,8 +8,13 @@
 2- I created a budget for my AWS account to help keep my expenses under control.
 
 - I set up the budget in case my expenses exceed the limits.
+- I set up two budgets: one for the free tier and one for the bootcamp budget.
+
+![](assets/budgets.jpg)
+
 - I set up alerts to notify me if my expenses reach certain thresholds, so I can take action to reduce my usage if necessary.
 - I also set up an SNS topic to receive the alerts so that I can be notified via email or text message.
+
 
 3- I generated access and secret keys for my AWS account so that I can use the AWS CLI to interact with my account.
 
