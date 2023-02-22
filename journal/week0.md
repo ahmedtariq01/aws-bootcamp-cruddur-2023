@@ -20,6 +20,15 @@
 
 - I generated the credentials and set up AWS CLI.
 - I configured the AWS CLI with these credentials so that I can easily run commands from my local machine.
+- I installed the aws cli on my local machine and tested it by running the command `aws --version` to check the version of the CLI that I have installed.
+
+```
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi /qn
+aws --version
+```
+![Installing aws cli](assets/awscli.jpg)
+
 
 4- I spent some time researching the best practices for setting up a CI/CD pipeline on AWS.
 
