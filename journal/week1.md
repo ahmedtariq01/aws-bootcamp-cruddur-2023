@@ -153,3 +153,39 @@ docker run --rm -p 4567:4567 -it  -e FRONTEND_URL -e BACKEND_URL backend-flask
 - Now the app is running in container and I can access it on the browser
 
 ![app running in container](assets/week1/apprunning02.jpg)
+
+7- After that I ran the NPM Install before building the container for Frontend app
+
+```
+cd frontend-react-js
+npm i
+```
+![Installing the libraries for frontend app](assets/week1/npmi.jpg)
+
+
+8- I created a Dockerfile for the frontend app here `frontend-react/Dockerfile`. Dockerfile is as follows
+
+```
+FROM node:16.18
+
+ENV PORT=3000
+
+COPY . /frontend-react-js
+WORKDIR /frontend-react-js
+RUN npm install
+EXPOSE ${PORT}
+CMD ["npm", "start"]
+```
+
+9- I built the container for the frontend app using the following command
+
+```
+docker build -t frontend-react-js ./frontend-react-js
+```
+![building the frontend app](assets/week1/frontendrun.jpg)
+
+- I ran the app in container using the following command
+
+```
+docker run -p 3000:3000 -d frontend-react-js
+```
