@@ -3,18 +3,21 @@
 ## Required Homework Tasks
 
 
-1- Create a new GitHub repo
+1- Create a new GitHub repo.
 - Launch the repo within a Gitpod workspace
 - Configure Gitpod.yml configuration, eg. VSCode Extensions
 - Clone the frontend and backend repo
 
 ![repo and gitpod setup](assets/week1/gitpod.jpg)
 
+2- I Installed the requirements for the backend app to run locally using the following command
+
 ```
 pip3 install -r requirements.txt
 ```
-
 ![installing the requirements](assets/week1/installingreq.jpg)
+
+3- I ran the app locally using the following command
 
 ```
 python3 -m flask run --host=0.0.0.0 --port=4567
@@ -22,9 +25,15 @@ python3 -m flask run --host=0.0.0.0 --port=4567
 ```
 ![running the app locally](assets/week1/apprun01.jpg)
 
+- I checked the app is running on port 4567
+
 ![port on which app is running](assets/week1/portcheck01.jpg)
 
+- I checked the app on the browser and it is running but giving the following error
+
 ![app is running but getting error](assets/week1/err01.jpg)
+
+
 ![setting up the environment variables for the app](assets/week1/setupvariables.jpg)
 
 
