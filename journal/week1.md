@@ -3,21 +3,62 @@
 ## Required Homework Tasks
 
 
-Create a new GitHub repo
-Launch the repo within a Gitpod workspace
+1- Create a new GitHub repo
+- Launch the repo within a Gitpod workspace
+- Configure Gitpod.yml configuration, eg. VSCode Extensions
+- Clone the frontend and backend repo
 
+![repo and gitpod setup](assets/week1/gitpod.jpg)
 
-Configure Gitpod.yml configuration, eg. VSCode Extensions
-
-Clone the frontend and backend repo
-
+```
 pip3 install -r requirements.txt
+```
 
+![installing the requirements](assets/week1/installreq.jpg)
+
+```
 python3 -m flask run --host=0.0.0.0 --port=4567
+
+```
+![running the app locally](assets/week1/apprun01.jpg)
+
+![port on which app is running](assets/week1/portcheck01.jpg)
+
+![app is running but getting error](assets/week1/err01.jpg)
+![setting up the environment variables for the app](assets/week1/setupvariables.jpg)
+
 
 https://4567-ahmedtariq0-awsbootcamp-faaa5sb9a9t.ws-us87.gitpod.io/api/activities/home
 
+![app running](assets/week1/apprunning01.jpg)
+
+![environment variables removed](assets/week1/varremoved.jpg)
+
+![building the container](assets/week1/build.jpg)
+
+![checking the build images](assets/week1/images.jpg)
+
+![running the app in container](assets/week1/runapp02.jpg)
+
+![getting errow when running the app in container](assets/week1/err02.jpg)
+
+
+![setting up the environment variables for the app in container](assets/week1/setupvar.jpg)
+
+![access the logs of the app in container](assets/week1/checklogs.jpg)
+
+![checking the logs of the app in container](assets/week1/logs.jpg)
+
+
+![running the app in container](assets/week1/runapp03.jpg)
+
+![app running in container](assets/week1/apprunning02.jpg)
+
+
+
 Explore the codebases
+
+docker images
 
 Ensure we can get the apps running locally
 
