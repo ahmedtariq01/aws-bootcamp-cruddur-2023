@@ -12,13 +12,13 @@
 - I set up the budget in case my expenses exceed the limits.
 - I set up two budgets: one for the free tier and one for the bootcamp budget.
 
-![creating budgets](assets/budgets.jpg)
+![creating budgets](assets/week0/budgets.jpg)
 
 - I set up alerts to notify me if my expenses reach certain thresholds, so I can take action to reduce my usage if necessary.
 - I also set up an SNS topic to receive the alerts so that I can be notified via email or text message.
 
-![sns topic](assets/snstopic.jpg)
-![setting alarms](assets/alarms.jpg)
+![sns topic](assets/week0/snstopic.jpg)
+![setting alarms](assets/week0/alarms.jpg)
 
 3- I generated access and secret keys for my AWS account so that I can use the AWS CLI to interact with my account.
 
@@ -32,7 +32,7 @@ msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
 msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi /qn
 aws --version
 ```
-![Installing aws cli](assets/awscli.jpg)
+![Installing aws cli](assets/week0/awscli.jpg)
 
 ## Homework Challenges
 
@@ -47,7 +47,7 @@ aws --version
 
 <a href="https://lucid.app/lucidchart/dc74d222-2278-4273-a741-269d7beaf5fb/edit?view_items=Yzbz3kuGTY39&invitationId=inv_b1a4980c-0ba6-4f57-96e8-8ba2e4d7b4b9" target="_blank">CI/CD Pipeline Architecture Diagram</a>
 
-![ci/cd pipeline](assets/cicdpipeline.jpg)
+![ci/cd pipeline](assets/week0/cicdpipeline.jpg)
 
 ### Application Architecture Diagram
 
@@ -60,7 +60,7 @@ aws --version
 
 <a href="https://lucid.app/lucidchart/c81b8184-1972-4182-bd25-b306e6a7b478/edit?view_items=3KbzM8XTKnAJ&invitationId=inv_423ed95a-be7e-4822-97f6-c345faa0780d" target="_blank">Application Architecture Diagram</a>
 
-![crudderr app](assets/crudderapp.jpg)
+![crudderr app](assets/week0/crudderapp.jpg)
 
 
 
