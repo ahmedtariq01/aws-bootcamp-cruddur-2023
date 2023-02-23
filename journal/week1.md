@@ -21,7 +21,6 @@ pip3 install -r requirements.txt
 
 ```
 python3 -m flask run --host=0.0.0.0 --port=4567
-
 ```
 ![running the app locally](assets/week1/apprun01.jpg)
 
@@ -33,19 +32,89 @@ python3 -m flask run --host=0.0.0.0 --port=4567
 
 ![app is running but getting error](assets/week1/err01.jpg)
 
+4- I set up the environment variables for the app using the following command
 
+```
+export FRONTEND_URL="*"
+export BACKEND_URL="*"
+```
+- I ran the app locally using the following command
+
+```
+python3 -m flask run --host=0.0.0.0 --port=4567
+```
 ![setting up the environment variables for the app](assets/week1/setupvariables.jpg)
 
+- I checked the app on the browser and it is running but giving the following error
+![app is running but getting error](assets/week1/err01.jpg)
 
+- Then I appended the url to `/api/activities/home` and this time app is running and return the json response. I got the following response
+```
 https://4567-ahmedtariq0-awsbootcamp-faaa5sb9a9t.ws-us87.gitpod.io/api/activities/home
+```
 
 ![app running](assets/week1/apprunning01.jpg)
 
+- After that I removed the environment variables using the following commands
+
+```
+unset FRONTEND_URL="*"
+unset BACKEND_URL="*"
+```
+-- Checked the environment variables are removed or not using the following command
+
+``` 
+env | grep FRONTEND_URL
+env | grep BACKEND_URL
+```
 ![environment variables removed](assets/week1/varremoved.jpg)
+
+- As the app is running locally now I will create a Dockerfile for the backend app and run the app in container
+
+5- I created a Dockerfile for the backend app here `backend-flask/Dockerfile`. Dockerfile is as follows
+
+```
+FROM python:3.10-slim-buster
+
+# Inside container
+# Create a directory for the app
+WORKDIR /backend-flask
+
+# Outside container -> Inside container
+# libraries required for the app
+COPY requirements.txt requirements.txt
+
+# Inside container
+# Install the python libraries used for the app
+RUN pip3 install -r requirements.txt
+
+# Outside container -> Inside container
+# . means everything in the current directory
+# . . means everything in the parent directory
+COPY . .
+
+ENV FLASK_ENV=development
+
+EXPOSE ${PORT}
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
+```
+
+6- I built the container for the backend app using the following command
+
+```
+docker build -t  backend-flask ./backend-flask
+```
 
 ![building the container](assets/week1/build.jpg)
 
+- I checked the image is created or not using the following command
+
+```
+docker images
+```
 ![checking the build images](assets/week1/images.jpg)
+
+
 
 ![running the app in container](assets/week1/runapp02.jpg)
 
