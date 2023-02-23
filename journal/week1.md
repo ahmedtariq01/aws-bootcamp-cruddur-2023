@@ -14,7 +14,7 @@
 pip3 install -r requirements.txt
 ```
 
-![installing the requirements](assets/week1/installreq.jpg)
+![installing the requirements](assets/week1/installingreq.jpg)
 
 ```
 python3 -m flask run --host=0.0.0.0 --port=4567
