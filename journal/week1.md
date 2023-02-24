@@ -210,7 +210,6 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend-react-js:/frontend-react-js
-      - /frontend-react-js/node_modules
 
 # the name flag is a hack to change the default prepend folder
 # name when outputting the image names
@@ -231,3 +230,4 @@ docker-compose up
 ![docker compose process](assets/week1/composerun.jpg)
 
 - The app is running in containers and I can access it on the browser
+![app is working](assets/week1/appworks.jpg)
