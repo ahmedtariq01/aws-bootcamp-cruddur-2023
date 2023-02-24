@@ -189,3 +189,45 @@ docker build -t frontend-react-js ./frontend-react-js
 ```
 docker run -p 3000:3000 -d frontend-react-js
 ```
+10- Now I will create a docker-compose.yml file in root folder to run the app in containers. The docker-compose.yml file is as follow
+```
+version: "3.8"
+services:
+  backend-flask:
+    environment:
+      FRONTEND_URL: "https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+      BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+    build: ./backend-flask
+    ports:
+      - "4567:4567"
+    volumes:
+      - ./backend-flask:/backend-flask
+  frontend-react-js:
+    environment:
+      REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+    build: ./frontend-react-js
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend-react-js:/frontend-react-js
+      - /frontend-react-js/node_modules
+
+# the name flag is a hack to change the default prepend folder
+# name when outputting the image names
+networks: 
+  internal-network:
+    driver: bridge
+    name: cruddur
+```
+- I ran the following command to run the app in containers
+
+```
+docker-compose up
+```
+- Alternatively I can run the app in containers by rihgt clicking on the docker-compose.yml file and selecting the option `Compose Up`
+![docker compose](assets/week1/compose.jpg)
+
+- The process is started after exceuuting the compose up
+![docker compose process](assets/week1/composerun.jpg)
+
+- The app is running in containers and I can access it on the browser
