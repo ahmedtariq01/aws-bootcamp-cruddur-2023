@@ -10,6 +10,7 @@
 
 ![repo and gitpod setup](assets/week1/gitpod.jpg)
 
+
 2- I Installed the requirements for the backend app to run locally using the following command
 
 ```
@@ -231,3 +232,6 @@ docker-compose up
 
 - The app is running in containers and I can access it on the browser
 ![app is working](assets/week1/appworks.jpg)
+
+
+
