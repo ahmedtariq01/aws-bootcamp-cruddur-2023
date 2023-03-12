@@ -50,6 +50,34 @@ pip install -r requirements.txt
 ```
 ![installing dependencies](assets/week2/installdependencies.jpg)
 
+- Now we'll add the following code to `app.py` to instrument the flask application. These updates will create and initialize a tracer and Flask instrumentation to send data to Honeycomb:
+
+```py
+from opentelemetry import trace
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+```
+
+
+```py
+# Initialize tracing and an exporter that can send data to Honeycomb
+provider = TracerProvider()
+processor = BatchSpanProcessor(OTLPSpanExporter())
+provider.add_span_processor(processor)
+trace.set_tracer_provider(provider)
+tracer = trace.get_tracer(__name__)
+```
+
+```py
+# Initialize automatic instrumentation with Flask
+FlaskInstrumentor().instrument_app(app)
+RequestsInstrumentor().instrument()
+```
+
+![add code](assets/week2/apppycode.jpg)
 
 
 
@@ -205,33 +233,7 @@ aws xray get-service-graph --start-time $(($EPOCH-600)) --end-time $EPOCH
 ```
 
 
-Add to the `app.py`
 
-```py
-from opentelemetry import trace
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-```
-
-
-```py
-# Initialize tracing and an exporter that can send data to Honeycomb
-provider = TracerProvider()
-processor = BatchSpanProcessor(OTLPSpanExporter())
-provider.add_span_processor(processor)
-trace.set_tracer_provider(provider)
-tracer = trace.get_tracer(__name__)
-```
-
-```py
-# Initialize automatic instrumentation with Flask
-app = Flask(__name__)
-FlaskInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
-```
 
 Add teh following Env Vars to `backend-flask` in docker compose
 
