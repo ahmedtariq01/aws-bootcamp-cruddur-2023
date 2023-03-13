@@ -32,7 +32,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
 OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 ```
 
-- Now we'll add the following dependencies to our `requirements.txt`
+- Now add the following dependencies to our `requirements.txt`
 
 ```py
 
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 ![installing dependencies](assets/week2/installdependencies.jpg)
 
-- Now we'll add the following code to `app.py` to instrument the flask application. These updates will create and initialize a tracer and Flask instrumentation to send data to Honeycomb:
+- Now add the following code to `app.py` to instrument the flask application. These updates will create and initialize a tracer and Flask instrumentation to send data to Honeycomb:
 
 ```py
 from opentelemetry import trace
@@ -79,6 +79,8 @@ RequestsInstrumentor().instrument()
 
 ![add code](assets/week2/apppycode.jpg)
 
+- Now docker compose up build and run the application
+![docker compose up](assets/week2/dockercomposeup.jpg)
 
 
 
