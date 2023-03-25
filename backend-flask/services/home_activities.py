@@ -1,8 +1,16 @@
 from datetime import datetime, timedelta, timezone
+from opentelemetry import trace
+
+tracer = trace.get_tracer("home.activities")    
+
 class HomeActivities:
   def run():
-    now = datetime.now(timezone.utc).astimezone()
-    results = [{
+    with tracer.start_as_current_span("mock-data"):
+      span = trace.get_current_span()
+      now = datetime.now(timezone.utc).astimezone()
+      span.set_attribute("app.now", now.isoformat())
+
+      results = [{
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
       'handle':  'Andrew Brown',
       'message': 'Cloud is fun!',
@@ -21,8 +29,8 @@ class HomeActivities:
         'reposts_count': 0,
         'created_at': (now - timedelta(days=2)).isoformat()
       }],
-    },
-    {
+      },
+      {
       'uuid': '66e12864-8c26-4c3a-9658-95a10f8fea67',
       'handle':  'Worf',
       'message': 'I am out of prune juice',
@@ -30,8 +38,8 @@ class HomeActivities:
       'expires_at': (now + timedelta(days=9)).isoformat(),
       'likes': 0,
       'replies': []
-    },
-    {
+      },
+      {
       'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
       'handle':  'Garek',
       'message': 'My dear doctor, I am just simple tailor',
@@ -39,6 +47,7 @@ class HomeActivities:
       'expires_at': (now + timedelta(hours=12)).isoformat(),
       'likes': 0,
       'replies': []
-    }
-    ]
+      }
+      ]
+    span.set_attribute("app.result_length", len(results))
     return results

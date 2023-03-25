@@ -82,27 +82,51 @@ RequestsInstrumentor().instrument()
 - Now docker compose up build and run the application
 ![docker compose up](assets/week2/dockercomposeup.jpg)
 
+- After running the application, we can see the dataset in Honeycomb.io
+![honeycomb dataset](assets/week2/dataset.jpg)
 
+- We can also see the traces in Honeycomb.io
+![honeycomb traces](assets/week2/traces.jpg)
 
+- Now to create spans we need to the following code to `home_activities.py`
 
-
-
-
-
-
+![add code](assets/week2/spans.jpg)
 
 2- Run queries to explore traces within Honeycomb.io
+- Now running a query to see the count traces for the `/api/activities/home` endpoint
+![honeycomb query](assets/week2/query1.jpg)
+
+- Now running another query to see the count of app now traces at specific time for the `/api/activities/home` endpoint
+![honeycomb query](assets/week2/query2.jpg)
+
+- Now running another query to see the Max duraction of app now traces at specific time for the `/api/activities/home` endpoint
+![honeycomb query](assets/week2/query3.jpg)
+
+- Now running another query to see the Heatmap and the 90th percentile of app now traces at specific time for the `/api/activities/home` endpoint
+![honeycomb query](assets/week2/query4.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 3- Instrument AWS X-Ray into backend flask application
 4- Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API
 5- Observe X-Ray traces within the AWS Console
 6- Integrate Rollbar for Error Logging
 7- Trigger an error an observe an error with Rollbar
 8- Install WatchTower and write a custom logger to send application log data to CloudWatch Log group
-
-
-
-
-
 
 
 
