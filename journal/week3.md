@@ -6,59 +6,16 @@
 - Create a new user pool on Amazon Cognito:
 ![cognito setuo](assets/week3/cognito_setup.jpg)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Install and configure Amplify client-side library for Amazon Congito
-Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
-Show conditional elements and data based on logged in or logged out
-Verify JWT Token server side to serve authenticated API endpoints in Flask Application
-Implement MFA that send an SMS (text message), warning this has spend, investigate spend before considering, text messages are not eligible for AWS Credits
-
-
-
-
-# Week 3 — Decentralized Authentication
-
-## Install AWS Amplify
-
+2- Install and configure Amplify client-side library for Amazon Congito
+- Install the Amplify client-side library for Amazon Cognito using the foll0wing command:
 ```sh
 npm i aws-amplify --save
 ```
+![installing amplify](assets/week3/install_amplify.jpg)
 
-## Provision Cognito User Group
-
-Using the AWS Console we'll create a Cognito User Group
-
-## Configure Amplify
-
-We need to hook up our cognito pool to our code in the `App.js`
-
+- Now configure the Amplify client-side library for Amazon Cognito by adding the following code to front-end `App.js`:
 ```js
+
 import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
@@ -77,6 +34,36 @@ Amplify.configure({
   }
 });
 ```
+- Now we need to add the following environment variables to the `docker-compose.yml` file:
+```yml
+    environment:
+        REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+        REACT_APP_AWS_PROJECT_REGION: "us-east-1"
+        REACT_APP_AWS_COGNITO_REGION: "us-east-1"
+        REACT_APP_AWS_USER_POOLS_ID: "us-east-1_fsg8SnbXC"
+        REACT_APP_CLIENT_ID: "4tt34sm0qab8uo7e16m90rsgt9"
+
+```
+
+
+
+
+
+
+
+
+
+Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
+Show conditional elements and data based on logged in or logged out
+Verify JWT Token server side to serve authenticated API endpoints in Flask Application
+Implement MFA that send an SMS (text message), warning this has spend, investigate spend before considering, text messages are not eligible for AWS Credits
+
+
+
+
+
+
+
 
 ## Conditionally show components based on logged in or logged out
 
