@@ -34,7 +34,7 @@ Amplify.configure({
   }
 });
 ```
-- Now we need to add the following environment variables to the `docker-compose.yml` file:
+- Now add the following environment variables to the `docker-compose.yml` file:
 ```yml
     environment:
         REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
@@ -44,30 +44,8 @@ Amplify.configure({
         REACT_APP_CLIENT_ID: "4tt34sm0qab8uo7e16m90rsgt9"
 
 ```
-
-
-
-
-
-
-
-
-
-Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
-Show conditional elements and data based on logged in or logged out
-Verify JWT Token server side to serve authenticated API endpoints in Flask Application
-Implement MFA that send an SMS (text message), warning this has spend, investigate spend before considering, text messages are not eligible for AWS Credits
-
-
-
-
-
-
-
-
-## Conditionally show components based on logged in or logged out
-
-Inside our `HomeFeedPage.js`
+3- Show conditional elements and data based on logged in or logged out
+- Now add the following code to the `HomeFeedPage.js` file:
 
 ```js
 import { Auth } from 'aws-amplify';
@@ -102,12 +80,27 @@ React.useEffect(()=>{
 }, [])
 ```
 
+
+
+
+
+
+
+Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
+
+Verify JWT Token server side to serve authenticated API endpoints in Flask Application
+Implement MFA that send an SMS (text message), warning this has spend, investigate spend before considering, text messages are not eligible for AWS Credits
+
+
+
+
+
+
+
+
 We'll want to pass user to the following components:
 
-```js
-<DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
-<DesktopSidebar user={user} />
-```
+
 
 We'll rewrite `DesktopNavigation.js` so that it it conditionally shows links in the left hand column
 on whether you are logged in or not.
