@@ -1,4 +1,9 @@
 tasks:
+  - name: prebuild
+    init: |
+      cd /workspace
+      # Add any prebuild commands you need to run here
+      
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial

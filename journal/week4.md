@@ -49,9 +49,27 @@ aws rds create-db-instance \
 ```
 
 - Now build the containers using the docker-compose up command. Containers should be up and running.
-
 ![compose up](assets/week4/db_container.jpg)
+
+- Containers are build and running
 ![rds](assets/week4/view_containers.jpg)
+
+- Now connect to the postgres database using the following command:
+```sh
+psql -Upostgres --host localhost
+```
+![psql](assets/week4/psql.jpg)
+
+- Create a new database called cruddur using the following command:
+```sql
+CREATE DATABASE cruddur;
+```
+![new db](assets/week4/crudder_db.jpg)
+- View the cruddur database using the following command:
+```sql
+\l
+```
+![view db](assets/week4/view_db.jpg)
 
 
 
