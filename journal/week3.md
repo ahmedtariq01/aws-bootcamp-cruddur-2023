@@ -241,43 +241,32 @@ export default function ProfileInfo(props) {
 }
 ```
 
-
-## Signin Page
+7- Update `frontend-react-js\src\pages\SigninPage.js`
 
 ```js
-import { Auth } from 'aws-amplify';
-
-const [cognitoErrors, setCognitoErrors] = React.useState('');
-
-const onsubmit = async (event) => {
-  setCognitoErrors('')
-  event.preventDefault();
-  try {
-    Auth.signIn(username, password)
-      .then(user => {
-        localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
-        window.location.href = "/"
-      })
-      .catch(err => { console.log('Error!', err) });
-  } catch (error) {
-    if (error.code == 'UserNotConfirmedException') {
-      window.location.href = "/confirm"
+  const onsubmit = async (event) => {
+    setErrors('')
+    event.preventDefault();
+    try {
+      Auth.signIn(username, password)
+        .then(user => {
+          localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+          window.location.href = "/"
+        })
+        .catch(err => { console.log('Error!', err) });
+    } catch (error) {
+      if (error.code == 'UserNotConfirmedException') {
+        window.location.href = "/confirm"
+      }
+       setErrors(error.message)
     }
-    setCognitoErrors(error.message)
+    return false
   }
-  return false
-}
 
-let errors;
-if (cognitoErrors){
-  errors = <div className='errors'>{cognitoErrors}</div>;
-}
-
-// just before submit component
-{errors}
 ```
+`
 
-## Signup Page
+8- Update `frontend-react-js\src\pages\SignupPage.js`
 
 ```js
 import { Auth } from 'aws-amplify';
@@ -309,13 +298,6 @@ const onsubmit = async (event) => {
   return false
 }
 
-let errors;
-if (cognitoErrors){
-  errors = <div className='errors'>{cognitoErrors}</div>;
-}
-
-//before submit component
-{errors}
 ```
 
 ## Confirmation Page
