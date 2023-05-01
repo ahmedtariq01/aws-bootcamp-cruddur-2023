@@ -2,6 +2,37 @@
 
 ## Required Homework Tasks
 
+- Setup aws credentials:
+```sh
+export AWS_ACCESS_KEY_ID=<your-access-key-id>
+export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
+
+```
+
+1- Create a new RDS database called cruddur uisng the following command:
+```sh
+aws rds create-db-instance \
+  --db-instance-identifier cruddur-db-instance \
+  --db-instance-class db.t3.micro \
+  --engine postgres \
+  --engine-version  14.6 \
+  --master-username root \
+  --master-user-password huEE33z2Qvl383 \
+  --allocated-storage 20 \
+  --availability-zone us-east-1a \
+  --backup-retention-period 0 \
+  --port 5432 \
+  --no-multi-az \
+  --db-name cruddur \
+  --storage-type gp2 \
+  --publicly-accessible \
+  --storage-encrypted \
+  --enable-performance-insights \
+  --performance-insights-retention-period 7 \
+  --no-deletion-protection
+```
+
+![rds](assets/week4/rds.jpg)
 
 Launch Postgres locally via a container
 Seed our Postgres Database table with data
