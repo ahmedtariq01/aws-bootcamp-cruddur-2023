@@ -34,7 +34,27 @@ aws rds create-db-instance \
 
 ![rds](assets/week4/rds.jpg)
 
-Launch Postgres locally via a container
+2- Launch Postgres locally via a container  by adding the following code in the docker-compose file
+```sh
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+```
+
+- Now build the containers using the docker-compose up command. Containers should be up and running.
+
+![compose up](assets/week4/db_container.jpg)
+![rds](assets/week4/view_containers.jpg)
+
+
+
 Seed our Postgres Database table with data
 Write a Postgres adapter
 Write a DDL (for creating schema)
