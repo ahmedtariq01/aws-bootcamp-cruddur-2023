@@ -80,32 +80,8 @@ React.useEffect(()=>{
 }, [])
 ```
 
-
-
-
-
-
-
-Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
-
-Verify JWT Token server side to serve authenticated API endpoints in Flask Application
-Implement MFA that send an SMS (text message), warning this has spend, investigate spend before considering, text messages are not eligible for AWS Credits
-
-
-
-
-
-
-
-
-We'll want to pass user to the following components:
-
-
-
-We'll rewrite `DesktopNavigation.js` so that it it conditionally shows links in the left hand column
+4- Rewrite `DesktopNavigation.js` so that it it conditionally shows links in the left hand column
 on whether you are logged in or not.
-
-Notice we are passing the user to ProfileInfo
 
 ```js
 import './DesktopNavigation.css';
@@ -161,23 +137,7 @@ export default function DesktopNavigation(props) {
   );
 }
 ```
-
-We'll update `ProfileInfo.js`
-
-```js
-import { Auth } from 'aws-amplify';
-
-const signOut = async () => {
-  try {
-      await Auth.signOut({ global: true });
-      window.location.href = "/"
-  } catch (error) {
-      console.log('error signing out: ', error);
-  }
-}
-```
-
-We'll rewrite `DesktopSidebar.js` so that it conditionally shows components in case you are logged in or not.
+5- Rewrite `DesktopSidebar.js` so that it conditionally shows components in case you are logged in or not.
 
 ```js
 import './DesktopSidebar.css';
@@ -228,6 +188,22 @@ export default function DesktopSidebar(props) {
   );
 }
 ```
+
+6- Update `ProfileInfo.js`
+
+```js
+import { Auth } from 'aws-amplify';
+
+const signOut = async () => {
+  try {
+      await Auth.signOut({ global: true });
+      window.location.href = "/"
+  } catch (error) {
+      console.log('error signing out: ', error);
+  }
+}
+```
+
 
 ## Signin Page
 
