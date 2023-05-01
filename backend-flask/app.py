@@ -40,8 +40,8 @@ origins = [frontend, backend]
 cors = CORS(
   app, 
   resources={r"/api/*": {"origins": origins}},
-  expose_headers="location,link",
-  allow_headers="content-type,if-modified-since",
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
   methods="OPTIONS,GET,HEAD,POST"
 )
 
@@ -132,6 +132,7 @@ def data_activities_reply(activity_uuid):
   else:
     return model['data'], 200
   return
+
 
 if __name__ == "__main__":
   app.run(debug=True)

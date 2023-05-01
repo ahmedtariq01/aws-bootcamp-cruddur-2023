@@ -300,7 +300,7 @@ const onsubmit = async (event) => {
 
 ```
 
-## Confirmation Page
+9- Update `frontend-react-js\src\pages\ConfirmationPage.js`
 
 ```js
 const resend_code = async (event) => {
@@ -335,7 +335,7 @@ const onsubmit = async (event) => {
 }
 ```
 
-## Recovery Page
+10- Update `frontend-react-js\src\pages\RecoverPage.js`
 
 ```js
 import { Auth } from 'aws-amplify';
@@ -364,7 +364,7 @@ const onsubmit_confirm_code = async (event) => {
 
 ## Authenticating Server Side
 
-Add in the `HomeFeedPage.js` a header eto pass along the access token
+Update in the `frontend-react-js\src\pages\HomeFeedPage.js` a header eto pass along the access token
 
 ```js
   headers: {
@@ -372,7 +372,7 @@ Add in the `HomeFeedPage.js` a header eto pass along the access token
   }
 ```
 
-In the `app.py`
+11- Update the `backend-flask\app.py`
 
 ```py
 cors = CORS(
