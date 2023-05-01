@@ -45,7 +45,7 @@ Amplify.configure({
 
 ```
 3- Show conditional elements and data based on logged in or logged out
-- Now add the following code to the `HomeFeedPage.js` file:
+- Now add the following code to the `frontend-react-js\src\pages\HomeFeedPage.js` file:
 
 ```js
 import { Auth } from 'aws-amplify';
@@ -80,7 +80,7 @@ React.useEffect(()=>{
 }, [])
 ```
 
-4- Rewrite `DesktopNavigation.js` so that it it conditionally shows links in the left hand column
+4- Rewrite `frontend-react-js\src\components\DesktopNavigation.js` so that it it conditionally shows links in the left hand column
 on whether you are logged in or not.
 
 ```js
@@ -137,7 +137,7 @@ export default function DesktopNavigation(props) {
   );
 }
 ```
-5- Rewrite `DesktopSidebar.js` so that it conditionally shows components in case you are logged in or not.
+5- Rewrite `frontend-react-js\src\components\DesktopSidebar.js` so that it conditionally shows components in case you are logged in or not.
 
 ```js
 import './DesktopSidebar.css';
@@ -189,18 +189,55 @@ export default function DesktopSidebar(props) {
 }
 ```
 
-6- Update `ProfileInfo.js`
+6- Update `frontend-react-js\src\components\ProfileInfo.js`
 
 ```js
+import './ProfileInfo.css';
+import {ReactComponent as ElipsesIcon} from './svg/elipses.svg';
+import React from "react";
+
+// [TODO] Authenication
 import { Auth } from 'aws-amplify';
 
-const signOut = async () => {
-  try {
-      await Auth.signOut({ global: true });
-      window.location.href = "/"
-  } catch (error) {
-      console.log('error signing out: ', error);
+export default function ProfileInfo(props) {
+  const [popped, setPopped] = React.useState(false);
+
+  const click_pop = (event) => {
+    setPopped(!popped)
   }
+
+  const signOut = async () => {
+    try {
+        await Auth.signOut({ global: true });
+        window.location.href = "/"
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+  }
+
+  const classes = () => {
+    let classes = ["profile-info-wrapper"];
+    if (popped == true){
+      classes.push('popped');
+    }
+    return classes.join(' ');
+  }
+
+  return (
+    <div className={classes()}>
+      <div className="profile-dialog">
+        <button onClick={signOut}>Sign Out</button> 
+      </div>
+      <div className="profile-info" onClick={click_pop}>
+        <div className="profile-avatar"></div>
+        <div className="profile-desc">
+          <div className="profile-display-name">{props.user.display_name || "My Name" }</div>
+          <div className="profile-username">@{props.user.handle || "handle"}</div>
+        </div>
+        <ElipsesIcon className='icon' />
+      </div>
+    </div>
+  )
 }
 ```
 
