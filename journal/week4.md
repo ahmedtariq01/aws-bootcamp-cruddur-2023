@@ -73,6 +73,7 @@ CREATE DATABASE cruddur;
 
 3- Seed our Postgres Database table with data
 - Now create a schema.sql file in the db folder in the backend-flask folder
+
 ![schemasql](assets/week4/schemasql.jpg)
 
 - Now add the following code in the schema.sql file to add UUID Extension
