@@ -80,7 +80,11 @@ CREATE DATABASE cruddur;
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ```
-
+- Now create the extension using the following command:
+```sql
+psql cruddur < db/schema.sql -h localhost -U postgres
+```
+![schemasql](assets/week4/extension_created.jpg)
 
 
 
