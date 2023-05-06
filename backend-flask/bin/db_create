@@ -1,3 +1,4 @@
-#! /usr/local/bin/bash
+#! /usr/bin/bash
 
-psql -Upostgres --host localhost -c "CREATE DATABASE cruddur;"
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"psql -U postgres --host localhost")
+createdb cruddur $NO_DB_CONNECTION_URL

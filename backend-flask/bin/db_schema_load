@@ -1,1 +1,8 @@
-#! /usr/local/bin/bash
+#! /usr/bin/bash
+
+schema_path="$(realpath .)/db/schema.sql"
+
+echo $schema_path
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"psql -U postgres --host localhost")
+psql $NO_DB_CONNECTION_URL cruddur < $schema_path

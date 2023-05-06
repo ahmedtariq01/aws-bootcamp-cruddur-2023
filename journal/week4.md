@@ -87,20 +87,54 @@ psql cruddur < db/schema.sql -h localhost -U postgres
 ![schemasql](assets/week4/extension_created.jpg)
 
 - Create three scripts in the bin folder in the `backend-flask` folder
- ![schemasql](assets/week4/bin_sh.jpg)
+
+ ![bin_sh](assets/week4/bin_sh.jpg)
 
 - Add the following script in the `bin/db_create` file to create the database
 ```sh
-#! /usr/local/bin/bash
+#! /usr/bin/bash
 
-psql -Upostgres --host localhost -c "CREATE DATABASE cruddur;"
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"psql -U postgres --host localhost")
+createdb cruddur $NO_DB_CONNECTION_URL
 ```
+
 - Add the following script in the `bin/db_drop` file to drop the database
 ```sh
-#! /usr/local/bin/bash
+#! /usr/bin/bash
 
-psql -Upostgres --host localhost -c "DROP DATABASE cruddur;"
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"psql -U postgres --host localhost")
+psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
 ```
+
+- Add the following script in the `bin/db_schema_load` file to load the schema
+```sh
+#! /usr/bin/bash
+
+schema_path="$(realpath .)/db/schema.sql"
+
+echo $schema_path
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"psql -U postgres --host localhost")
+psql $NO_DB_CONNECTION_URL cruddur < $schema_path
+
+```
+
+- Make the scripts executable using the following command:
+
+```
+chmod u+x bin/db_create
+chmod u+x bin/db_drop
+chmod u+x bin/db_schema_load
+```
+
+- Now run the following command to first drop the database and then create the database:
+```cmd
+./bin.db_drop
+./bin/db_create
+```
+![db_sh](assets/week4/script_db.jpg)
+
+
 
 
 Write a Postgres adapter
