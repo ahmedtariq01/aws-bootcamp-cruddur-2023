@@ -72,7 +72,7 @@ CREATE DATABASE cruddur;
 ![view db](assets/week4/view_db.jpg)
 
 3- Seed our Postgres Database table with data
-- Now create a schema.sql file in the db folder in the backend-flask folder
+- Now create a schema.sql file in the db folder in the `backend-flask` folder
 
 ![schemasql](assets/week4/schemasql.jpg)
 
@@ -86,7 +86,21 @@ psql cruddur < db/schema.sql -h localhost -U postgres
 ```
 ![schemasql](assets/week4/extension_created.jpg)
 
+- Create three scripts in the bin folder in the `backend-flask` folder
+ ![schemasql](assets/week4/bin_sh.jpg)
 
+- Add the following script in the `bin/db_create` file to create the database
+```sh
+#! /usr/local/bin/bash
+
+psql -Upostgres --host localhost -c "CREATE DATABASE cruddur;"
+```
+- Add the following script in the `bin/db_drop` file to drop the database
+```sh
+#! /usr/local/bin/bash
+
+psql -Upostgres --host localhost -c "DROP DATABASE cruddur;"
+```
 
 
 Write a Postgres adapter
