@@ -86,6 +86,7 @@ psql cruddur < db/schema.sql -h localhost -U postgres
 ```
 ![schemasql](assets/week4/extension_created.jpg)
 
+4- Write a DDL (for creating schema) and DML (for inserting data) script for Postgres
 - Create three scripts in the bin folder in the `backend-flask` folder
 
  ![bin_sh](assets/week4/bin_sh.jpg)
@@ -127,23 +128,45 @@ chmod u+x bin/db_drop
 chmod u+x bin/db_schema_load
 ```
 
-- Now run the following command to first drop the database and then create the database:
+- Now run the following command to first drop the database and then create the database and load the schema:
 ```cmd
 ./bin.db_drop
 ./bin/db_create
+./bin/db_schema_load
 ```
 ![db_sh](assets/week4/script_db.jpg)
+![schema_sh](assets/week4/schema_sh_db.jpg)
 
+-5 Write a Postgres adapter for the backend application
+- Update the `db/schema.sql` file to add the following code to first drop the table if it exists and then create the table:
+```sql
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
 
+CREATE TABLE public.users (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  display_name text,
+  handle text
+  cognito_user_id text,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
 
+CREATE TABLE public.activities (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  message text NOT NULL,
+  replies_count integer DEFAULT 0,
+  reposts_count integer DEFAULT 0,
+  likes_count integer DEFAULT 0,
+  reply_to_activity_uuid integer,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
 
-Write a Postgres adapter
-Write a DDL (for creating schema)
-Write an SQL read query
-Write an SQL write query
-Provision an RDS Postgres instance
-Configure VPC Security Groups
-Configure local backend application to use production connection URL
-Add a caching layer using Momento Serverless Cache
-Propagate metrics from DDB to an RDS metrics table 
+```
+- Now run the following command to first drop the database and then create the database and load the schema:
+```cmd
+./bin/db_schema_load
+```
+![db_sh](assets/week4/create_tables.jpg)
+
 
